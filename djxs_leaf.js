@@ -104,39 +104,6 @@ function video(uIdx,idx,p1) {
     })
 }
 
-function draw(uIdx,p1) {
-    return new Promise((resolve) => {
-        let userId = userIdArr[uIdx]
-        const hd ={"Accept": "*/*",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Accept-Language": "zh-cn",
-        "Connection": "keep-alive",
-        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-        "Host": "dj.palmestore.com",
-        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
-        "Cookie": `sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%22j52491554%22%2C%22first_id%22%3A%2217e1680e1981d0f-0ae3d025548815-744c1751-329160-17e1680e19923bf%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22%24device_id%22%3A%2217e1680e1981d0f-0ae3d025548815-744c1751-329160-17e1680e19923bf%22%7D; sajssdk_2015_cross_new_user=1`,
-        "Referer": `https://dj.palmestore.com/zyam/app/app.php?activeId=68&ca=Wheel.Index&idfa=00000000-0000-0000-0000-000000000000&jailbreak=0&kt=4ea4c0918929c90c5e5f6100038770e2&ku=${userId}&p1=F114704798564E9F92264FD03083B782&p11=584&p12=&p16=iPhone13,2&p2=126001&p21=31303&p22=iOS,15.0&p25=14050160&p3=17144260&p4=501660&p5=1001&p6=AAAAAAAAAAAAAAAAAAAA&p7=AAAAAAAAAAAAAAA&p9=0&pc=10&rgt=7&usr=${userId}&zyeid=d9ef1831-680d-454a-947b-a234005379d3`,
-        "X-Requested-With": "XMLHttpRequest"}
-        let url = {
-            url: `https://dj.palmestore.com/zyam/app/app.php?usr=${userId}&rgt=7&p1=F114704798564E9F92264FD03083B782&p2=126001&p3=17144260&p4=501660&p5=1001&p6=AAAAAAAAAAAAAAAAAAAA&p7=AAAAAAAAAAAAAAA&p9=0&p11=584&p16=iPhone13%2C2&p21=31303&p22=iOS%2C15.0&p25=14050160&zyeid=d9ef1831-680d-454a-947b-a234005379d3&pca=Wheel.Index&ku=${userId}&kt=4ea4c0918929c90c5e5f6100038770e2&ca=Wheel.Draw&idfa=00000000-0000-0000-0000-000000000000&activeId=68&drawType=2`,
-            headers: hd,
-        }
-        $.get(url, async (err, resp, data) => {
-            try {
-                const result = JSON.parse(data)
-                if (result.code == 0) {
-                    console.log(`账户${uIdx+1}抽奖：${result.body.title}`)
-                } else {
-                    console.log(`账户${uIdx+1}抽奖失败：${result.msg}\n`)
-                }
-            } catch (e) {
-            } finally {
-                resolve()
-            }
-        })
-    })
-}
-
 function randomString(len=32) {
     let chars = 'QWERTYUIOPASDFGHJKLZXCVBNM0123456789';
     let maxLen = chars.length;
